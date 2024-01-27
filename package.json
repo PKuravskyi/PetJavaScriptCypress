@@ -1,23 +1,37 @@
 {
-  "name": "petjavascriptcypress",
-  "version": "1.0.0",
-  "description": "Practicing testing with JavaScript and Cypress",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/PKuravskyi/PetJavaScriptCypress.git"
-  },
-  "keywords": [
-    "JavaScript",
-    "Cypress"
-  ],
-  "author": "Pavlo Kuravskyi",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PKuravskyi/PetJavaScriptCypress/issues"
-  },
-  "homepage": "https://github.com/PKuravskyi/PetJavaScriptCypress#readme"
+	"name": "petjavascriptcypress",
+	"version": "1.0.0",
+	"description": "Practicing testing with JavaScript and Cypress",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/PKuravskyi/PetJavaScriptCypress.git"
+	},
+	"keywords": [
+		"JavaScript",
+		"Cypress"
+	],
+	"author": "Pavlo Kuravskyi",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/PKuravskyi/PetJavaScriptCypress/issues"
+	},
+	"homepage": "https://github.com/PKuravskyi/PetJavaScriptCypress#readme",
+	"dependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-icons": "^4.7.1"
+	},
+	"devDependencies": {
+		"@types/react": "^18.0.27",
+		"@types/react-dom": "^18.0.10",
+		"@vitejs/plugin-react": "^3.1.0",
+		"vite": "^4.1.0"
+	}
 }
