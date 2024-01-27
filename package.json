@@ -1,0 +1,23 @@
+{
+  "name": "petjavascriptcypress",
+  "version": "1.0.0",
+  "description": "Practicing testing with JavaScript and Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PKuravskyi/PetJavaScriptCypress.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "Cypress"
+  ],
+  "author": "Pavlo Kuravskyi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PKuravskyi/PetJavaScriptCypress/issues"
+  },
+  "homepage": "https://github.com/PKuravskyi/PetJavaScriptCypress#readme"
+}
