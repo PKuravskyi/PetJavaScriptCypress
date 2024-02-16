@@ -36,7 +36,7 @@ jobs:
           name: allure-results-${{ matrix.containers }}
           path: allure-results
 
-  download-reports:
+  generate-reports:
     needs: cypress-run
     runs-on: ubuntu-latest
     steps:
@@ -46,4 +46,9 @@ jobs:
           path: allure-results
           pattern: allure-results-*
           merge-multiple: true
-      - run: ls -R allure-results
+
+      - name: Deploy Allure reports
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-results
