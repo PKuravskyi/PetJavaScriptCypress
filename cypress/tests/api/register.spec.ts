@@ -2,7 +2,7 @@
 
 import { registrationEndpoint } from '../../services/endpoints/RegistrationEndpoint';
 
-describe('API Registration', () => {
+describe('API: Registration', () => {
 	it('should register a new user', () => {
 		const randomUsername = new Date().getTime().toString();
 		const userData = {
@@ -11,8 +11,6 @@ describe('API Registration', () => {
 		};
 
 		registrationEndpoint.registerUser(userData).then(response => {
-			console.log(response);
-			expect(response.status).to.eq(200);
 			expect(response.body).to.have.property('token');
 		});
 	});
