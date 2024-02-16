@@ -1,6 +1,11 @@
-/node_modules
+node_modules/
 
 # Cypress related
-/cypress/downloads
-/cypress/screenshots
-/cypress/videos
+cypress/downloads/
+cypress/screenshots/
+cypress/videos/
+cypress/results/
+
+# Reports
+allure-results/
+allure-report/

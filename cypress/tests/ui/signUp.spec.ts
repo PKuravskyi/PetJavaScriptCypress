@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe('Sign up page', () => {
+describe('UI: Sign up', () => {
 	it('should be possible to register new user via UI', () => {
 		const userName = new Date().getTime().toString();
 

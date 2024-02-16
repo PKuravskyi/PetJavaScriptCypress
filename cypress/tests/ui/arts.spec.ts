@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-describe('Arts page', () => {
+describe('UI: Arts', () => {
 	beforeEach(() => {
 		cy.visit('/');
 	});
