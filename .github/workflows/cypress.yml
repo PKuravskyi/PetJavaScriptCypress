@@ -31,3 +31,9 @@ jobs:
           group: 'UI-Chrome'
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+      - name: Archive Allure results
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-results
+          path: allure-results
