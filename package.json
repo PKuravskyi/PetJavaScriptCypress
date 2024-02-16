@@ -5,8 +5,7 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"cy:open": "cypress open",
-		"cy:run": "cypress run"
+		"cy:run": "cypress run --browser chrome"
 	},
 	"repository": {
 		"type": "git",
@@ -23,6 +22,7 @@
 	},
 	"homepage": "https://github.com/PKuravskyi/PetJavaScriptCypress#readme",
 	"devDependencies": {
+		"@mmisty/cypress-allure-adapter": "^0.16.4",
 		"cypress": "^13.6.4",
 		"typescript": "^5.3.3"
 	}
