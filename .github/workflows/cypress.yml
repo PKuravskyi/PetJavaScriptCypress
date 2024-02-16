@@ -12,7 +12,7 @@ jobs:
         containers: [1, 2, 3, 4, 5]
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Install dependencies
@@ -25,11 +25,8 @@ jobs:
 
       - name: Run Cypress tests
         id: cypress-tests
-        uses: cypress-io/github-action@v6
+        run: npm run cy:run
         if: always()
-        with:
-          record: true
-          parallel: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
