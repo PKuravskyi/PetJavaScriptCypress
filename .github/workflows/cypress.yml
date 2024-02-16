@@ -49,4 +49,4 @@ jobs:
           path: allure-results
           pattern: allure-results-*
           merge-multiple: true
-      - run: ls -R allure-results-
+      - run: ls -R allure-results
