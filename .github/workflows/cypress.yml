@@ -24,16 +24,21 @@ jobs:
           ./ShoppingStoreApp/shopping-store-linux-amd64 &
 
       - name: Run Cypress tests
+        id: cypress-tests
         uses: cypress-io/github-action@v6
+        if: always()
         with:
           record: true
           parallel: true
-          group: 'UI-Chrome'
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
+  allure-results:
+    runs-on: ubuntu-latest
+    needs: cypress-run
+    steps:
       - name: Archive Allure results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: allure-results
