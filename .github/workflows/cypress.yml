@@ -36,6 +36,5 @@ jobs:
       - name: Archive Allure results
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results
+          name: allure-results-${{ matrix.containers }}
           path: allure-results
-        if: always() && steps.cypress-tests.outcome == 'completed'
