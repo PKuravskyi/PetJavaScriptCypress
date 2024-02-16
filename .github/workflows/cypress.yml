@@ -23,4 +23,6 @@ jobs:
           ./ShoppingStoreApp/shopping-store-linux-amd64 &
 
       - name: Run Cypress tests
-        run: npm run cy:run -- --parallel --record --group ${{ matrix.parallelism }}
+        run: npm run cy:run --parallel --record --group ${{ matrix.parallelism }}
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
