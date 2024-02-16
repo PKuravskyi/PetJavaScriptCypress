@@ -40,7 +40,6 @@ jobs:
     steps:
       - name: Check directory contents
         run: ls -l
-        working-directory: .
 
       - name: Archive Allure results
         uses: actions/upload-artifact@v4

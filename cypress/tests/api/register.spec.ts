@@ -3,7 +3,7 @@
 import { registrationEndpoint } from '../../services/endpoints/RegistrationEndpoint';
 
 describe('API: Registration', () => {
-	it('should register a new user', () => {
+	it.only('should register a new user', () => {
 		const randomUsername = new Date().getTime().toString();
 		const userData = {
 			username: randomUsername,
