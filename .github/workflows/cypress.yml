@@ -20,8 +20,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Cypress tests
+      - name: Start Shopping Store App
         run: |
           chmod +x './ShoppingStoreApp/shopping-store-linux-amd64'
-            ./ShoppingStoreApp/shopping-store-linux-amd64 &
-          npm run cy:run
+          ./ShoppingStoreApp/shopping-store-linux-amd64 &
+
+      - name: Run Cypress tests
+        run: npm run cy:run
