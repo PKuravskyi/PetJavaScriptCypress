@@ -39,7 +39,7 @@ jobs:
     if: always()
     steps:
       - name: Check directory contents
-        run: ls -la
+        run: ls
         working-directory: .
 
       - name: Archive Allure results
