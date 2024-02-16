@@ -4,7 +4,10 @@
 	"description": "Practicing testing with JavaScript and Cypress",
 	"main": "index.js",
 	"type": "module",
-	"scripts": {},
+	"scripts": {
+		"cy:open": "cypress open",
+		"cy:run": "cypress run"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+ssh://git@github.com/PKuravskyi/PetJavaScriptCypress.git"
@@ -20,6 +23,7 @@
 	},
 	"homepage": "https://github.com/PKuravskyi/PetJavaScriptCypress#readme",
 	"devDependencies": {
-		"cypress": "^13.6.4"
+		"cypress": "^13.6.4",
+		"typescript": "^5.3.3"
 	}
 }

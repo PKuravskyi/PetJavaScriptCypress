@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"module": "es6",
+		"strict": true,
+		"esModuleInterop": true,
+		"allowJs": true,
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
+		"types": ["cypress"]
+	},
+	"include": ["cypress/**/*.ts"]
+}

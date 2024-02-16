@@ -2,7 +2,7 @@
 
 describe('Sign up page', () => {
 	it('should be possible to register new user via UI', () => {
-		const userName = new Date().getTime();
+		const userName = new Date().getTime().toString();
 
 		cy.visit('/signup');
 		cy.get('[placeholder="E-Mail"]').type(userName);
