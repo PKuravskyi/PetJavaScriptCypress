@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        parallelism: [1, 2, 3, 4, 5]
+        containers: [1, 2, 3, 4, 5]
 
     steps:
       - name: Checkout code
@@ -28,5 +28,6 @@ jobs:
         with:
           record: true
           parallel: true
+          group: 'UI-Chrome'
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
