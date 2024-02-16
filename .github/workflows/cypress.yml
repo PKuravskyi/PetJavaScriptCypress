@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   cypress-run:
-    timeout-minutes: 5
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -24,6 +24,9 @@ jobs:
           ./ShoppingStoreApp/shopping-store-linux-amd64 &
 
       - name: Run Cypress tests
-        run: npm run cy:run --parallel --record --group ${{ matrix.parallelism }}
+        uses: cypress-io/github-action@v6
+        with:
+          record: true
+          parallel: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
