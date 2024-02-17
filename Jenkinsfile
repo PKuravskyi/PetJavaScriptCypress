@@ -1,8 +1,9 @@
 pipeline {
-	agent any
-
-	tools {
-		nodejs '20.11.1'
+	agent {
+		docker {
+			image 'node:20.11.1'
+			args '-u root'
+		}
 	}
 		
     parameters {
