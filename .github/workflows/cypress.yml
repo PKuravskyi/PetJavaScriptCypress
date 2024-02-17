@@ -27,28 +27,19 @@ jobs:
         id: cypress-tests
         run: npm run cy:run
         if: always()
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Upload Allure results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v2
         with:
-          name: allure-results-${{ matrix.containers }}
+          name: allure-results
           path: allure-results
 
-  generate-reports:
+  download-artifacts:
     needs: cypress-run
     runs-on: ubuntu-latest
     steps:
-      - name: Download All Artifacts
-        uses: actions/download-artifact@v4
+      - name: Download Allure results
+        uses: actions/download-artifact@v2
         with:
+          name: allure-results
           path: allure-results
-          pattern: allure-results-*
-          merge-multiple: true
-
-      - name: Deploy Allure reports
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-results
