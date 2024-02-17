@@ -1,10 +1,9 @@
 pipeline {
-	agent {
-        docker { 
-            image 'node:20.11.1'
-            args '-u root'
-        }
-    }
+	agent any
+
+	tools {
+		nodejs '20.11.1'
+	}
 		
     parameters {
 		choice(name: 'TestType', choices: ['smoke', 'ui', 'api'], description: 'Select type of test')
