@@ -16,14 +16,14 @@ pipeline {
 					build_triggered_by = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
 					build_triggered_by = build_triggered_by - ('user ')
 					user_name = build_triggered_by.split('/')[0]
-					currentBuild.description = "${user_name}"
+					currentBuild.description = "<b>${user_name}</b>"
 				}
 			}
 		}
 
         stage('Clone repository') {
             steps {
-                git branch: 'main', url: 'git@github.com:PKuravskyi/PetTypeScriptCypress.git'
+                git branch: 'main', url: 'https://github.com/PKuravskyi/PetTypeScriptCypress.git'
             }
         }
 
