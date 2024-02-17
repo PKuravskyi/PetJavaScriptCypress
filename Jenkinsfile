@@ -1,12 +1,22 @@
 pipeline {
     agent any
 		
+    parameters {
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
+    }
+
+    environment {
+        BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].userId}"
+    }
+
     stages {
-        stage('Checkout') {
+        stage('Checkout repository') {
             steps {
-                checkout scm
+				echo "Build triggered by: ${BUILD_TRIGGER_BY}"
+                git branch: "${params.BRANCH}", url: 'https://github.com/vkozub/PetProjectJS.git'
             }
         }
+
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
@@ -14,29 +24,16 @@ pipeline {
         }
 
         stage('Run tests') {
-            matrix {
-                axes {
-                    axis {
-                        name 'CONTAINER'
-                        values '1', '2', '3', '4', '5'
-                    }
-                }
-                stages {
-                    stage('Run tests in container') {
-                        steps {
-                            script {
-                                echo "Running tests in container ${CONTAINER}"
-                                sh '''
-                                    chmod +x './ShoppingStoreApp/shopping-store-linux-amd64'
-                                    ./ShoppingStoreApp/shopping-store-linux-amd64 &
-                                '''
-                                sh "npm run cy:run"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-    }
+			steps {
+				script {
+					currentBuild.description = "${BUILD_TRIGGER_BY}"
+					sh '''
+						chmod +x './ShoppingStoreApp/shopping-store-linux-amd64'
+						./ShoppingStoreApp/shopping-store-linux-amd64 &
+					'''
+					sh "npm run cy:run"
+				}
+			}
+		}
+	}
 }
