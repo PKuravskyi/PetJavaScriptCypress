@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { docker { image 'node:20.11.1-alpine3.19' } }
 		
     parameters {
 		gitParameter(branchFilter: 'origin/(.*)',
@@ -20,7 +20,7 @@ pipeline {
 					build_triggered_by = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
 					build_triggered_by = build_triggered_by - ('user ')
 					user_name = build_triggered_by.split('/')[0]
-					currentBuild.description = "<b>${user_name}</b>"
+					currentBuild.description = "${user_name}"
 				}
 			}
 		}
