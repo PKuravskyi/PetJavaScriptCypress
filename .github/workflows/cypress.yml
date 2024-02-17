@@ -47,10 +47,11 @@ jobs:
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          record: true
           parallel: true
           start: npm run cy:run
           browser: chrome
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Upload Allure results
         uses: actions/upload-artifact@v4
