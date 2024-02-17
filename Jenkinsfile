@@ -13,9 +13,6 @@ pipeline {
 			useRepository: 'git@github.com:PKuravskyi/PetTypeScriptCypress.git')
 	}
 
-    environment {
-    }
-
     stages {
 		stage('Add triggered by') {
 			steps {
