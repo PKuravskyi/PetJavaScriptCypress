@@ -13,10 +13,11 @@ pipeline {
 		stage('Add triggered by') {
 			steps {
 				script {
-					build_triggered_by = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
-					build_triggered_by = build_triggered_by - ('user ')
-					user_name = build_triggered_by.split('/')[0]
-					currentBuild.description = "<b>${user_name}</b>"
+					def buildCause = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)
+					if (buildCause) {
+						def triggeredBy = buildCause.getUserName()
+						currentBuild.description = "<b>${triggeredBy}</b>"
+					}
 				}
 			}
 		}
@@ -29,7 +30,12 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-                sh 'npm install'
+                sh '''
+					apt-get install libgtk2.0-0 libgtk-3-0 \
+						libgbm-dev libnotify-dev libnss3 \
+						libxss1 libasound2 libxtst6 xauth xvfb
+					npm install
+				'''
             }
         }
 
