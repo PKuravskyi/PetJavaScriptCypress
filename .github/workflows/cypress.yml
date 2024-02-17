@@ -25,7 +25,7 @@ jobs:
 
       - name: Run Cypress tests
         id: cypress-tests
-        run: npm run cy:run
+        run: npm run cy:run:test
         if: always()
 
       - name: Upload Allure results
