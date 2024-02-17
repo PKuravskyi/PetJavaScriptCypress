@@ -12,14 +12,7 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Start Shopping Store App') {
-            steps {
-                sh '''
-                    chmod +x './ShoppingStoreApp/shopping-store-linux-amd64'
-                    ./ShoppingStoreApp/shopping-store-linux-amd64 &
-                '''
-            }
-        }
+
         stage('Run tests') {
             matrix {
                 axes {
@@ -33,17 +26,17 @@ pipeline {
                         steps {
                             script {
                                 echo "Running tests in container ${CONTAINER}"
-                                sh "npm run cy:run -- --browser chrome --spec cypress/tests/**/*.spec.ts"
+                                sh '''
+                                    chmod +x './ShoppingStoreApp/shopping-store-linux-amd64'
+                                    ./ShoppingStoreApp/shopping-store-linux-amd64 &
+                                '''
+                                sh "npm run cy:run"
                             }
                         }
                     }
                 }
             }
         }
-        stage('Upload Allure results') {
-            steps {
-                archiveArtifacts artifacts: 'allure-results/**', allowEmptyArchive: true
-            }
-        }
+
     }
 }
