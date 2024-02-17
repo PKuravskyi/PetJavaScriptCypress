@@ -25,12 +25,6 @@ pipeline {
 			}
 		}
 
-        stage('Checkout repository') {
-            steps {
-                git branch: "${params.BRANCH}", url: 'https://github.com/vkozub/PetProjectJS.git'
-            }
-        }
-
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
