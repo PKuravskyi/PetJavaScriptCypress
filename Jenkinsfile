@@ -10,17 +10,6 @@ pipeline {
 	}
 
     stages {
-		stage('Add triggered by') {
-			steps {
-				script {
-					def buildCauses = currentBuild.rawBuild.getCauses()
-					def cause = buildCauses.find { it.class.canonicalName == 'hudson.model.Cause$UserIdCause' }
-					def userName = cause?.userId ?: 'Unknown'
-					currentBuild.description = "<b>${userName}</b>"
-				}
-			}
-		}
-
         stage('Clone repository') {
             steps {
                 git branch: 'main', url: 'https://github.com/PKuravskyi/PetTypeScriptCypress.git'
