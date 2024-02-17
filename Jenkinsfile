@@ -1,18 +1,13 @@
 pipeline {
-    agent any
-
-	tools {nodejs "recent node"}
+	agent {
+        docker { 
+            image 'node:20.11.1'
+            args '-u root'
+        }
+    }
 		
     parameters {
-		gitParameter(branchFilter: 'origin/(.*)',
-			defaultValue: 'main',
-			name: 'GIT_BRANCH',
-			type: 'PT_BRANCH',
-			listSize: '10',
-			quickFilterEnabled: true,
-			sortMode: 'ASCENDING_SMART',
-			selectedValue: 'DEFAULT',
-			useRepository: 'git@github.com:PKuravskyi/PetTypeScriptCypress.git')
+		choice(name: 'TestType', choices: ['smoke', 'ui', 'api'], description: 'Select type of test')
 	}
 
     stages {
@@ -26,6 +21,12 @@ pipeline {
 				}
 			}
 		}
+
+        stage('Clone repository') {
+            steps {
+                git branch: 'main', url: 'git@github.com:PKuravskyi/PetTypeScriptCypress.git'
+            }
+        }
 
         stage('Install dependencies') {
             steps {
