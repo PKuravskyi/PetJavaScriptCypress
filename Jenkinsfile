@@ -13,11 +13,10 @@ pipeline {
 		stage('Add triggered by') {
 			steps {
 				script {
-					def buildCause = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)
-					if (buildCause) {
-						def triggeredBy = buildCause.getUserName()
-						currentBuild.description = "<b>${triggeredBy}</b>"
-					}
+					def buildCauses = currentBuild.rawBuild.getCauses()
+					def cause = buildCauses.find { it.class.canonicalName == 'hudson.model.Cause$UserIdCause' }
+					def userName = cause?.userId ?: 'Unknown'
+					currentBuild.description = "<b>${userName}</b>"
 				}
 			}
 		}
