@@ -4,10 +4,6 @@ pipeline {
 			image 'cypress/base:20.9.0'
 		}
 	}
-		
-    parameters {
-		choice(name: 'TestType', choices: ['smoke', 'ui', 'api'], description: 'Select type of test')
-	}
 
     stages {
         stage('Clone repository') {
