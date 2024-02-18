@@ -5,7 +5,6 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"cy:run:default": "cypress run",
 		"cy:run": "cypress run --browser chrome",
 		"cy:run:test": "cypress run --browser chrome --spec 'cypress/tests/ui/arts.spec.ts'"
 	},
