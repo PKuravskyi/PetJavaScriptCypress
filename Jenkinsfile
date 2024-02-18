@@ -1,7 +1,7 @@
 pipeline {
 	agent {
 		docker {
-			image 'cypress/base:20.9.0'
+			image 'cypress/base:latest'
 		}
 	}
 
@@ -15,7 +15,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh '''
-					echo 'Installing cypress and npm dependencies
+					echo 'Installing cypress and npm dependencies'
 					apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev \
 						libnss3 libxss1 libasound2 libxtst6 xauth xvfb
 					npm install
