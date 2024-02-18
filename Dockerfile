@@ -1,6 +1,9 @@
 # Use the official Jenkins LTS image as the base image
 FROM jenkins/jenkins:lts
 
+# Switch to the root user to install dependencies
+USER root
+
 # Install necessary dependencies
 RUN apt-get update && \
 	apt-get install -y wget gnupg && \
