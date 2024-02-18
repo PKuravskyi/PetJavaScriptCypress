@@ -26,7 +26,7 @@ pipeline {
         stage('Run tests') {
 			steps {
 				script {
-					sh 'npm run cy:run:default'
+					sh 'npm run cy:run'
 				}
 			}
 		}
