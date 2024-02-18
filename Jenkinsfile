@@ -1,7 +1,7 @@
 pipeline {
 	agent {
 		docker {
-			image 'cypress/included'
+			image 'cypress/browsers'
 		}
 	}
 
