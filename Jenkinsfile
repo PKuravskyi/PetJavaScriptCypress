@@ -14,12 +14,7 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-                sh '''
-					echo 'Installing cypress and npm dependencies'
-					apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev \
-						libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-					npm install
-				'''
+                sh 'npm install'
             }
         }
 
@@ -31,7 +26,7 @@ pipeline {
 						chmod +x './ShoppingStoreApp/shopping-store-linux-amd64'
 						./ShoppingStoreApp/shopping-store-linux-amd64 &
 					'''
-					sh "npm run cy:run"
+					sh 'npm run cy:run'
 				}
 			}
 		}
