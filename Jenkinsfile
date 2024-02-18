@@ -14,7 +14,7 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-                sh 'npm install'
+                sh 'npm ci'
             }
         }
 
@@ -26,10 +26,7 @@ pipeline {
 						chmod +x './ShoppingStoreApp/shopping-store-linux-amd64'
 						./ShoppingStoreApp/shopping-store-linux-amd64 &
 					'''
-					sh '''
-						npm ci
-						npm run cy:run
-					'''
+					sh 'npm run cy:run'
 				}
 			}
 		}
