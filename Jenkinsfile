@@ -23,7 +23,7 @@ pipeline {
 			}
 		}
 
-        stage('Run tests') {
+		stage('Run tests') {
 			steps {
 				script {
 					sh 'npm run cy:run'
