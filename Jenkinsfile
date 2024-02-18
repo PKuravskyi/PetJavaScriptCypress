@@ -26,7 +26,7 @@ pipeline {
 						chmod +x './ShoppingStoreApp/shopping-store-linux-amd64'
 						./ShoppingStoreApp/shopping-store-linux-amd64 &
 					'''
-					sh 'npm run cy:run'
+					sh 'npm run cy:run:default'
 				}
 			}
 		}
