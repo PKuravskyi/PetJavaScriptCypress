@@ -33,9 +33,6 @@ jobs:
       - name: Print GitHub strategy context
         run: echo '${{ toJSON(strategy) }}'
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Start Shopping Store App
         run: |
           chmod +x './ShoppingStoreApp/shopping-store-linux-amd64'
