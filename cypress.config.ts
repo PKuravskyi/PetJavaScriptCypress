@@ -1,5 +1,6 @@
 import { defineConfig } from 'cypress';
 import { configureAllureAdapterPlugins } from '@mmisty/cypress-allure-adapter/plugins';
+import cypressSplit from 'cypress-split';
 
 export default defineConfig({
 	projectId: 'fk32jg',
@@ -11,6 +12,7 @@ export default defineConfig({
 		viewportWidth: 1280,
 		setupNodeEvents(on, config) {
 			configureAllureAdapterPlugins(on, config);
+			cypressSplit(on, config);
 			return config;
 		},
 	},

@@ -25,6 +25,7 @@
 	"devDependencies": {
 		"@mmisty/cypress-allure-adapter": "^0.16.4",
 		"cypress": "^13.6.4",
+		"cypress-split": "^1.20.1",
 		"typescript": "^5.3.3"
 	}
 }
