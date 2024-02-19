@@ -6,7 +6,8 @@
 	"type": "module",
 	"scripts": {
 		"cy:run": "cypress run --browser chrome",
-		"cy:run:test": "cypress run --browser chrome --spec 'cypress/tests/ui/arts.spec.ts'"
+		"cy:run:ui": "cypress run --browser chrome --spec 'cypress/tests/ui'",
+		"cy:run:api": "cypress run --browser chrome --spec 'cypress/tests/api'"
 	},
 	"repository": {
 		"type": "git",
