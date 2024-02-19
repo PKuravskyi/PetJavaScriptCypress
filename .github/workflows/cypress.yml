@@ -1,33 +1,35 @@
-# name: Cypress Tests
+name: Cypress Tests
 
-# on: [push]
+on: [push]
 
-# jobs:
-#   tests:
-#     timeout-minutes: 10
-#     runs-on: ubuntu-latest
-#     strategy:
-#       fail-fast: false
-#       matrix:
-#         containers: [1, 2, 3, 4, 5]
+jobs:
+  tests:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3, 4, 5]
 
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-#       - name: Install dependencies
-#         run: npm install
+      - name: Install dependencies
+        run: npm install
 
-#       - name: Start Shopping Store App
-#         run: |
-#           chmod +x './ShoppingStoreApp/shopping-store-linux-amd64'
-#           ./ShoppingStoreApp/shopping-store-linux-amd64 &
+      - name: Start Shopping Store App
+        run: |
+          chmod +x './ShoppingStoreApp/shopping-store-linux-amd64'
+          ./ShoppingStoreApp/shopping-store-linux-amd64 &
 
-#       - name: Run tests
-#         run: npm run cy:run
+      - name: Run tests
+        run: npm run cy:run
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
-#       - name: Upload Allure results
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: allure-results
-#           path: allure-results
+      - name: Upload Allure results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
